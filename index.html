@@ -12,57 +12,61 @@
     box-sizing: border-box;
 }
 
-html, body {
-    width: 100%;
-    height: 100%;
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    overflow: hidden;
+    min-height: 100vh;
     background:
-        radial-gradient(circle at 50% 45%, rgba(45, 55, 80, 0.18), transparent 35%),
+        radial-gradient(circle at 50% 45%, rgba(45,55,80,.18), transparent 35%),
         linear-gradient(180deg, #05070b 0%, #080b12 55%, #030408 100%);
     color: #e8ebf2;
     font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
 }
 
-/* Ночное небо */
+/* =========================
+   BACKGROUND
+========================= */
+
 .sky {
     position: fixed;
     inset: 0;
     pointer-events: none;
     overflow: hidden;
+    z-index: 0;
 }
 
-/* Очень слабые звёзды */
 .star {
     position: absolute;
     width: 1px;
     height: 1px;
-    background: rgba(255,255,255,0.55);
+    background: rgba(255,255,255,.55);
     border-radius: 50%;
     animation: twinkle 4s infinite ease-in-out;
 }
 
-.star:nth-child(1) { left: 12%; top: 18%; animation-delay: 1s; }
-.star:nth-child(2) { left: 23%; top: 31%; animation-delay: 2s; }
-.star:nth-child(3) { left: 34%; top: 12%; animation-delay: .5s; }
-.star:nth-child(4) { left: 67%; top: 19%; animation-delay: 1.7s; }
-.star:nth-child(5) { left: 78%; top: 34%; animation-delay: 2.5s; }
-.star:nth-child(6) { left: 88%; top: 14%; animation-delay: .8s; }
-.star:nth-child(7) { left: 58%; top: 10%; animation-delay: 3s; }
-.star:nth-child(8) { left: 43%; top: 27%; animation-delay: 1.3s; }
+.star:nth-child(1){left:12%;top:18%;animation-delay:1s}
+.star:nth-child(2){left:23%;top:31%;animation-delay:2s}
+.star:nth-child(3){left:34%;top:12%;animation-delay:.5s}
+.star:nth-child(4){left:67%;top:19%;animation-delay:1.7s}
+.star:nth-child(5){left:78%;top:34%;animation-delay:2.5s}
+.star:nth-child(6){left:88%;top:14%;animation-delay:.8s}
+.star:nth-child(7){left:58%;top:10%;animation-delay:3s}
+.star:nth-child(8){left:43%;top:27%;animation-delay:1.3s}
 
 @keyframes twinkle {
-    0%, 100% { opacity: .15; }
-    50% { opacity: .65; }
+    0%,100% { opacity:.15; }
+    50% { opacity:.65; }
 }
 
-/* Дождь */
 .rain {
     position: fixed;
     inset: 0;
     pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
 }
 
 .drop {
@@ -73,25 +77,21 @@ body {
     background: linear-gradient(
         to bottom,
         transparent,
-        rgba(180, 200, 225, 0.35)
+        rgba(180,200,225,.35)
     );
     animation: rain linear infinite;
 }
 
-/* Дождь преимущественно по краям */
-.drop:nth-child(1) { left: 3%; animation-duration: 1.2s; animation-delay: .2s; }
-.drop:nth-child(2) { left: 6%; animation-duration: 1.6s; animation-delay: .8s; }
-.drop:nth-child(3) { left: 9%; animation-duration: 1.3s; animation-delay: .4s; }
-.drop:nth-child(4) { left: 13%; animation-duration: 1.8s; animation-delay: 1s; }
-.drop:nth-child(5) { left: 17%; animation-duration: 1.5s; animation-delay: .3s; }
-.drop:nth-child(6) { left: 22%; animation-duration: 1.9s; animation-delay: 1.4s; }
-
-.drop:nth-child(7) { right: 3%; left: auto; animation-duration: 1.4s; }
-.drop:nth-child(8) { right: 7%; left: auto; animation-duration: 1.7s; animation-delay: .5s; }
-.drop:nth-child(9) { right: 11%; left: auto; animation-duration: 1.3s; animation-delay: 1s; }
-.drop:nth-child(10) { right: 15%; left: auto; animation-duration: 1.8s; animation-delay: .2s; }
-.drop:nth-child(11) { right: 20%; left: auto; animation-duration: 1.5s; animation-delay: 1.2s; }
-.drop:nth-child(12) { right: 24%; left: auto; animation-duration: 1.9s; animation-delay: .7s; }
+.drop:nth-child(1){left:7%;animation-duration:1.7s;animation-delay:.2s}
+.drop:nth-child(2){left:12%;animation-duration:2.1s;animation-delay:1s}
+.drop:nth-child(3){left:18%;animation-duration:1.5s;animation-delay:.4s}
+.drop:nth-child(4){left:25%;animation-duration:2.4s;animation-delay:1.7s}
+.drop:nth-child(5){left:81%;animation-duration:1.9s;animation-delay:.8s}
+.drop:nth-child(6){left:86%;animation-duration:2.3s;animation-delay:.1s}
+.drop:nth-child(7){left:91%;animation-duration:1.6s;animation-delay:1.2s}
+.drop:nth-child(8){left:96%;animation-duration:2.2s;animation-delay:.6s}
+.drop:nth-child(9){left:4%;animation-duration:2.5s;animation-delay:2s}
+.drop:nth-child(10){left:94%;animation-duration:1.8s;animation-delay:1.5s}
 
 @keyframes rain {
     to {
@@ -99,7 +99,10 @@ body {
     }
 }
 
-/* Навигация */
+/* =========================
+   NAVIGATION
+========================= */
+
 .nav {
     position: fixed;
     top: 28px;
@@ -109,16 +112,16 @@ body {
     align-items: center;
     gap: 8px;
     padding: 7px;
-    border: 1px solid rgba(255,255,255,0.07);
-    background: rgba(10, 13, 20, 0.55);
+    border: 1px solid rgba(255,255,255,.07);
+    background: rgba(10,13,20,.55);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
     border-radius: 14px;
-    z-index: 10;
+    z-index: 100;
 }
 
 .nav a {
-    color: rgba(235,238,245,.65);
+    color: rgba(235,238,245,.58);
     text-decoration: none;
     font-size: 12px;
     letter-spacing: .08em;
@@ -127,21 +130,38 @@ body {
     transition: .25s ease;
 }
 
-.nav a:hover {
+.nav a:hover,
+.nav a.active {
     color: white;
     background: rgba(255,255,255,.07);
 }
 
-/* Главный экран */
-.hero {
+/* =========================
+   PAGES
+========================= */
+
+.page {
+    display: none;
+    min-height: 100vh;
     position: relative;
+    z-index: 5;
+}
+
+.page.active {
+    display: block;
+}
+
+/* =========================
+   HOME
+========================= */
+
+.home {
     width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    z-index: 2;
 }
 
 .center {
@@ -162,10 +182,7 @@ body {
     letter-spacing: .16em;
     margin-right: -.16em;
     color: rgba(239,242,248,.92);
-
-    text-shadow:
-        0 0 35px rgba(160,180,220,.08);
-
+    text-shadow: 0 0 35px rgba(160,180,220,.08);
     animation: appear 1.6s cubic-bezier(.16,1,.3,1) forwards;
 }
 
@@ -183,6 +200,7 @@ body {
         transform: translateY(25px);
         letter-spacing: .3em;
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -190,7 +208,220 @@ body {
     }
 }
 
-/* Нижняя информация */
+/* =========================
+   COMMON CONTENT
+========================= */
+
+.content-page {
+    width: min(1300px, calc(100% - 50px));
+    margin: 0 auto;
+    padding: 130px 0 80px;
+}
+
+.page-heading {
+    margin-bottom: 45px;
+}
+
+.page-heading .small {
+    color: rgba(220,225,236,.35);
+    font-size: 10px;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+
+.page-heading h1 {
+    font-size: clamp(38px, 6vw, 72px);
+    font-weight: 500;
+    letter-spacing: -.04em;
+}
+
+.page-heading p {
+    margin-top: 14px;
+    max-width: 650px;
+    color: rgba(220,225,236,.45);
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+/* =========================
+   RULES
+========================= */
+
+.rules-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+.rules-menu {
+    position: sticky;
+    top: 110px;
+    padding: 12px;
+    border: 1px solid rgba(255,255,255,.07);
+    background: rgba(10,13,20,.45);
+    backdrop-filter: blur(18px);
+    border-radius: 16px;
+}
+
+.rules-menu-title {
+    color: rgba(220,225,236,.28);
+    font-size: 9px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    padding: 10px;
+    margin-bottom: 4px;
+}
+
+.rules-menu a {
+    display: block;
+    color: rgba(230,234,242,.45);
+    text-decoration: none;
+    font-size: 11px;
+    padding: 9px 10px;
+    border-radius: 8px;
+    transition: .2s;
+}
+
+.rules-menu a:hover {
+    color: white;
+    background: rgba(255,255,255,.06);
+}
+
+.rules-document {
+    min-width: 0;
+    padding: 38px;
+    border: 1px solid rgba(255,255,255,.07);
+    background: rgba(8,11,18,.58);
+    backdrop-filter: blur(18px);
+    border-radius: 20px;
+}
+
+.rules-intro {
+    padding-bottom: 30px;
+    margin-bottom: 35px;
+    border-bottom: 1px solid rgba(255,255,255,.07);
+}
+
+.rules-intro .via-hello {
+    color: rgba(230,234,242,.8);
+    font-size: 13px;
+    letter-spacing: .08em;
+    margin-bottom: 20px;
+}
+
+.rules-intro p {
+    color: rgba(220,225,236,.55);
+    line-height: 1.8;
+    font-size: 14px;
+}
+
+.rule-section {
+    padding: 34px 0;
+    border-bottom: 1px solid rgba(255,255,255,.055);
+    scroll-margin-top: 100px;
+}
+
+.rule-section:last-child {
+    border-bottom: none;
+}
+
+.rule-section h2 {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-bottom: 24px;
+    color: rgba(245,247,250,.9);
+}
+
+.rule {
+    margin: 20px 0;
+    color: rgba(220,225,236,.58);
+    line-height: 1.75;
+    font-size: 14px;
+}
+
+.rule strong {
+    color: rgba(245,247,250,.86);
+}
+
+.punishment {
+    display: inline-block;
+    margin-top: 8px;
+    color: rgba(190,205,225,.65);
+    font-size: 12px;
+    padding-left: 12px;
+    border-left: 2px solid rgba(180,200,225,.18);
+}
+
+.warning {
+    padding: 18px;
+    margin: 20px 0;
+    border: 1px solid rgba(255,255,255,.08);
+    background: rgba(255,255,255,.025);
+    border-radius: 12px;
+    color: rgba(235,238,245,.65);
+    line-height: 1.7;
+    font-size: 12px;
+}
+
+/* =========================
+   PROJECT
+========================= */
+
+.project-box,
+.team-box {
+    max-width: 900px;
+    padding: 45px;
+    border: 1px solid rgba(255,255,255,.07);
+    background: rgba(8,11,18,.58);
+    backdrop-filter: blur(18px);
+    border-radius: 20px;
+}
+
+.project-box h2,
+.team-box h2 {
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.project-box p,
+.team-box p {
+    color: rgba(220,225,236,.52);
+    line-height: 1.9;
+    font-size: 14px;
+    margin-bottom: 18px;
+}
+
+.project-status,
+.team-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 12px;
+    padding: 9px 13px;
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 8px;
+    color: rgba(230,234,242,.5);
+    font-size: 10px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.status-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(190,210,235,.55);
+    box-shadow: 0 0 8px rgba(190,210,235,.4);
+}
+
+/* =========================
+   BOTTOM
+========================= */
+
 .bottom {
     position: fixed;
     bottom: 28px;
@@ -202,7 +433,7 @@ body {
     font-size: 10px;
     letter-spacing: .16em;
     text-transform: uppercase;
-    z-index: 5;
+    z-index: 20;
 }
 
 .status {
@@ -211,56 +442,115 @@ body {
     gap: 8px;
 }
 
-.status-dot {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: rgba(190,210,235,.55);
-    box-shadow: 0 0 8px rgba(190,210,235,.4);
-}
+/* =========================
+   VIGNETTE
+========================= */
 
-/* Затемнение краёв */
 .vignette {
     position: fixed;
     inset: 0;
     pointer-events: none;
     z-index: 3;
-    background: radial-gradient(
-        ellipse at center,
-        transparent 35%,
-        rgba(0,0,0,.3) 75%,
-        rgba(0,0,0,.65) 100%
-    );
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 35%,
+            rgba(0,0,0,.3) 75%,
+            rgba(0,0,0,.65) 100%
+        );
 }
 
-/* Телефон */
-@media (max-width: 600px) {
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 800px) {
 
     .nav {
-        top: 18px;
-        max-width: calc(100% - 30px);
-        overflow-x: auto;
+        top: 15px;
+        width: calc(100% - 24px);
+        justify-content: center;
+        gap: 2px;
     }
 
     .nav a {
-        white-space: nowrap;
-        padding: 9px 11px;
-        font-size: 10px;
+        font-size: 9px;
+        padding: 9px 8px;
+        letter-spacing: .04em;
+    }
+
+    .content-page {
+        width: calc(100% - 24px);
+        padding: 105px 0 70px;
+    }
+
+    .rules-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .rules-menu {
+        position: sticky;
+        top: 75px;
+        z-index: 30;
+        display: flex;
+        overflow-x: auto;
+        gap: 3px;
+        padding: 7px;
+    }
+
+    .rules-menu-title {
+        display: none;
+    }
+
+    .rules-menu a {
+        flex: 0 0 auto;
+        font-size: 9px;
+        padding: 8px 10px;
+    }
+
+    .rules-document {
+        padding: 22px 18px;
+        border-radius: 16px;
+    }
+
+    .rule-section h2 {
+        font-size: 18px;
+    }
+
+    .rule {
+        font-size: 13px;
+    }
+
+    .project-box,
+    .team-box {
+        padding: 28px 22px;
+    }
+
+    .bottom {
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+        font-size: 8px;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .nav a {
+        padding: 8px 6px;
+        font-size: 8px;
     }
 
     .logo {
-        font-size: 26vw;
+        font-size: 85px;
     }
 
     .subtitle {
         font-size: 9px;
-        letter-spacing: .18em;
     }
 
-    .bottom {
-        left: 18px;
-        right: 18px;
-        bottom: 18px;
+    .page-heading h1 {
+        font-size: 42px;
     }
 }
 </style>
@@ -268,64 +558,939 @@ body {
 
 <body>
 
+<!-- BACKGROUND -->
+
 <div class="sky">
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
 </div>
 
 <div class="rain">
-    <div class="drop"></div>
-    <div class="drop"></div>
-    <div class="drop"></div>
-    <div class="drop"></div>
-    <div class="drop"></div>
-    <div class="drop"></div>
-
-    <div class="drop"></div>
-    <div class="drop"></div>
-    <div class="drop"></div>
-    <div class="drop"></div>
-    <div class="drop"></div>
-    <div class="drop"></div>
+    <span class="drop"></span>
+    <span class="drop"></span>
+    <span class="drop"></span>
+    <span class="drop"></span>
+    <span class="drop"></span>
+    <span class="drop"></span>
+    <span class="drop"></span>
+    <span class="drop"></span>
+    <span class="drop"></span>
+    <span class="drop"></span>
 </div>
 
+
+<!-- NAVIGATION -->
+
 <nav class="nav">
-    <a href="#">ГЛАВНАЯ</a>
-    <a href="#">ПРАВИЛА</a>
-    <a href="#">ПРОЕКТ</a>
-    <a href="#">КОМАНДА</a>
+    <a href="#home" data-page="home">ГЛАВНАЯ</a>
+    <a href="#rules" data-page="rules">ПРАВИЛА</a>
+    <a href="#project" data-page="project">ПРОЕКТ</a>
+    <a href="#team" data-page="team">КОМАНДА</a>
 </nav>
 
-<main class="hero">
 
-    <div class="center">
-        <div class="label">VIA COMMUNITY</div>
+<!-- =========================
+     HOME
+========================= -->
 
-        <div class="logo">VIA</div>
+<section class="page active" id="home">
 
-        <div class="subtitle">
-            Всё начинается здесь
+    <main class="home">
+
+        <div class="center">
+
+            <div class="label">
+                VIA COMMUNITY
+            </div>
+
+            <div class="logo">
+                VIA
+            </div>
+
+            <div class="subtitle">
+                Всё начинается здесь
+            </div>
+
         </div>
+
+    </main>
+
+</section>
+
+
+<!-- =========================
+     RULES
+========================= -->
+
+<section class="page" id="rules">
+
+    <div class="content-page">
+
+        <div class="page-heading">
+            <div class="small">VIA COMMUNITY / DOCUMENTATION</div>
+            <h1>Правила</h1>
+            <p>
+                Основной нормативный документ проекта VIA.
+                Ознакомление с правилами является обязательным для всех участников.
+            </p>
+        </div>
+
+
+        <div class="rules-layout">
+
+            <!-- RULES MENU -->
+
+            <aside class="rules-menu">
+
+                <div class="rules-menu-title">
+                    Разделы
+                </div>
+
+                <a href="#section-1">01 — Общие положения</a>
+                <a href="#section-2">02 — Профиль</a>
+                <a href="#section-3">03 — Текстовый регламент</a>
+                <a href="#section-4">04 — Речевой этикет</a>
+                <a href="#section-5">05 — Ограничения</a>
+                <a href="#section-6">06 — Конфиденциальность</a>
+                <a href="#section-7">07 — Реклама</a>
+                <a href="#section-8">08 — Аккаунты</a>
+                <a href="#section-9">09 — Обход наказаний</a>
+                <a href="#section-10">10 — Voice</a>
+                <a href="#section-11">11 — Ивенты</a>
+                <a href="#section-12">12 — Багоюз</a>
+                <a href="#section-13">13 — Staff</a>
+                <a href="#section-14">14 — Апелляции</a>
+                <a href="#section-15">15 — Заключение</a>
+                <a href="#section-16">16 — Угрозы и атаки</a>
+
+            </aside>
+
+
+            <!-- DOCUMENT -->
+
+            <article class="rules-document">
+
+                <div class="rules-intro">
+
+                    <div class="via-hello">
+                        via hello)
+                    </div>
+
+                    <p>
+                        Настоящий документ является высшим нормативно-правовым
+                        актом, регулирующим порядок общения, пребывания и
+                        взаимодействия участников на всех официальных ресурсах
+                        проекта <strong>via</strong>. Незнание правил не освобождает
+                        от ответственности.
+                    </p>
+
+                </div>
+
+
+                <!-- 1 -->
+
+                <section class="rule-section" id="section-1">
+
+                    <h2>
+                        Раздел 1. Общие положения и Статус Правил
+                    </h2>
+
+                    <div class="rule">
+                        <strong>1.1. Преамбула:</strong>
+                        Все ресурсы проекта <strong>via</strong> созданы для
+                        комфортного и безопасного общения участников.
+                    </div>
+
+                    <div class="rule">
+                        <strong>1.2. Субординация:</strong>
+                        Все участники обязаны соблюдать нормы адекватного,
+                        вежливого общения по отношению к другим пользователям
+                        и персоналу (Staff).
+                    </div>
+
+                    <div class="rule">
+                        <strong>1.3. Язык общения:</strong>
+                        Официальными языками общения являются украинский,
+                        русский и английский. Использование других языков
+                        допустимо при отсутствии провокаций.
+                    </div>
+
+                    <div class="rule">
+                        <strong>1.4. Превалирование духа правил:</strong>
+                        Администрация оставляет за собой право пресекать любые
+                        вредоносные действия, даже если они прямо не указаны
+                        в данном документе.
+                    </div>
+
+                </section>
+
+
+                <!-- 2 -->
+
+                <section class="rule-section" id="section-2">
+
+                    <h2>
+                        Раздел 2. Оформление Профиля
+                        (Аватары, Никнеймы, Статусы)
+                    </h2>
+
+                    <div class="rule">
+                        <strong>2.1. Никнеймы и Теги:</strong>
+                        Запрещены ники, содержащие мат, оскорбления, рекламу
+                        сторонних ресурсов, политические провокации, а также
+                        копирующие никнеймы Персонала.
+                        <div class="punishment">
+                            Наказание: Просьба сменить ник → Кик / Блокировка
+                            до смены ника.
+                        </div>
+                    </div>
+
+                    <div class="rule">
+                        <strong>2.2. Аватары и Баннеры:</strong>
+                        Запрещена установка медиафайлов 18+ (NSFW/порнография),
+                        сцен насилия, свастики, запрещенной символики или фото
+                        других участников без их согласия.
+                        <div class="punishment">
+                            Наказание: Предупреждение → Мут от 6 часов
+                            до смены аватара.
+                        </div>
+                    </div>
+
+                    <div class="rule">
+                        <strong>2.3. Статусы и Описание профиля:</strong>
+                        Запрещено размещение сторонних рекламных ссылок,
+                        фишинга, RMT-услуг или оскорблений в инфо о себе
+                        при активном участии в чатах.
+                        <div class="punishment">
+                            Наказание: Мут на 12 часов → Кик / Бан.
+                        </div>
+                    </div>
+
+                </section>
+
+
+                <!-- 3 -->
+
+                <section class="rule-section" id="section-3">
+
+                    <h2>
+                        Раздел 3. Текстовый Регламент и Порядок Чтения
+                    </h2>
+
+                    <div class="rule">
+                        <strong>3.1. Спам и Флуд:</strong>
+                        Отправка однотипных сообщений, беспрерывный поток
+                        гифок/стикеров, бессмысленный набор букв или отправка
+                        сообщений по 1 слову в короткий промежуток времени.
+                        <div class="punishment">
+                            Наказание: Предупреждение → Мут от 15 до 45 минут.
+                        </div>
+                    </div>
+
+                    <div class="rule">
+                        <strong>3.2. Злоупотребление Caps Lock и Оформлением:</strong>
+                        Написание сообщений верхним регистром (более 50% текста),
+                        злоупотребление жирным шрифтом, спойлерами или форматированием.
+                        <div class="punishment">
+                            Наказание: Предупреждение → Мут на 15–30 минут.
+                        </div>
+                    </div>
+
+                    <div class="rule">
+                        <strong>3.3. Массовый Пинг (Теги):</strong>
+                        Злоупотребление упоминаниями пользователей,
+                        администраторов или рабочих ролей без веской причины.
+                        <div class="punishment">
+                            Наказание: Мут от 30 до 90 минут.
+                        </div>
+                    </div>
+
+                </section>
+
+
+                <!-- 4 -->
+
+                <section class="rule-section" id="section-4">
+
+                    <h2>
+                        Раздел 4. Речевой Этикет и Нормы Общественного Общения
+                    </h2>
+
+                    <div class="rule">
+                        <strong>4.1. Ненормативная лексика:</strong>
+                        Чрезмерное, ничем не обоснованное использование мата,
+                        а также использование скрытого/завуалированного мата
+                        в агрессивном ключе.
+                        <div class="punishment">
+                            Наказание: Предупреждение → Мут на 30–60 минут.
+                        </div>
+                    </div>
+
+                    <div class="rule">
+                        <strong>4.2. Оскорбления и Троллинг:</strong>
+                        Прямые и завуалированные оскорбления участников,
+                        переход на личности, провоцирование драмы, токсичность
+                        и травля (буллинг).
+                        <div class="punishment">
+                            Наказание: Мут от 1 до 3 часов → Повторно:
+                            Мут на 12 часов.
+                        </div>
+                    </div>
+
+                    <div class="rule">
+                        <strong>4.3. Упоминание Родственников:</strong>
+                        Любые неадекватные шутки, завуалированные или прямые
+                        оскорбления родителей и близких родственников участников.
+                        <div class="punishment">
+                            Наказание: Мут на 24 часа → Бан от 3 до 7 дней.
+                        </div>
+                    </div>
+
+                </section>
+
+
+                <!-- 5 -->
+
+                <section class="rule-section" id="section-5">
+
+                    <h2>
+                        Раздел 5. Морально-Этические Ограничения
+                        и Деструктивные Темы
+                    </h2>
+
+                    <div class="rule">
+                        <strong>5.1. Политика и Военные действия:</strong>
+                        Обсуждение политических событий, военных конфликтов,
+                        государственных деятелей и разжигание споров на эту тему.
+                        <div class="punishment">
+                            Наказание: Мут от 3 до 24 часов → Бан от 7 дней.
+                        </div>
+                    </div>
+
+                    <div class="rule">
+                        <strong>5.2. Дискриминация и Рознь:</strong>
+                        Пропаганда расизма, нацизма, ксенофобии, шовинизма,
+                        религиозной или гендерной нетерпимости.
+                        <div class="punishment">
+                            Наказание: Мут от 12 часов → Бан от 7 до 30 дней.
+                        </div>
+                    </div>
+
+                    <div class="rule">
+                        <strong>5.3. Контент 18+ (NSFW):</strong>
+                        Публикация или публикация ссылок на материалы
+                        порнографического характера, эротику, шок-контент
+                        или сцены жестокости.
+                        <div class="punishment">
+                            Наказание: Мут на 12 часов → Бан от 3 дней
+                            до Перманентного.
+                        </div>
+                    </div>
+
+                </section>
+
+
+                <!-- 6 -->
+
+                <section class="rule-section" id="section-6">
+
+                    <h2>
+                        Раздел 6. Безопасность Данных, Конфиденциальность и Деанон
+                    </h2>
+
+                    <div class="rule">
+                        <strong>6.1. Разглашение Личных Данных (Деанон):</strong>
+                        Публикация реальных ФИО, номеров телефонов, адресов,
+                        личных фото, документов или геолокации участников/персонала
+                        без их явного согласия.
+                        <div class="punishment">
+                            Наказание: Перманентный бан на всех ресурсах via
+                            без права на апелляцию + ЧС.
+                        </div>
+                    </div>
+
+                    <div class="rule">
+                        <strong>6.2. Вредоносные Ссылки и Фишинг:</strong>
+                        Распространение ссылок на скрипты, вирусы,
+                        мошеннические платформы или стиллеры.
+                        <div class="punishment">
+                            Наказание: Немедленный Перманентный бан.
+                        </div>
+                    </div>
+
+                    <div class="rule">
+                        <strong>6.3. Угрозы:</strong>
+                        Угрозы расправой в реальной жизни, проведение
+                        Дос/Сват-атак или шантаж участников.
+                        <div class="punishment">
+                            Наказание: Перманентный бан и внесение
+                            в Чёрный Список.
+                        </div>
+                    </div>
+
+                </section>
+
+
+                <!-- 7 -->
+
+                <section class="rule-section" id="section-7">
+
+                    <h2>
+                        Раздел 7. Реклама, Пиар и Коммерческая Деятельность
+                    </h2>
+
+                    <div class="rule">
+                        <strong>7.1. Несогласованный Пиар:</strong>
+                        Распространение ссылок на сторонние Telegram-каналы,
+                        серверы, сайты, проекты или боты в публичных чатах
+                        или в ЛС участникам.
+                        <div class="punishment">
+                            Наказание: Мут на 30 минут/24 часа →
+                            Бан от 7 дней до Перманентного.
+                        </div>
+                    </div>
+
+                    <div class="rule">
+                        <strong>7.2. Торговля (RMT) и Продажи:</strong>
+                        Попытки покупки, продажи или обмена аккаунтов,
+                        валюты, цифровых товаров или услуг за реальные деньги
+                        без разрешения Руководства.
+                        <div class="punishment">
+                            Наказание: Бан от 14 дней до Перманентного.
+                        </div>
+                    </div>
+
+                    <div class="rule">
+                        <strong>7.3. Попрошайничество и Мошенничество:</strong>
+                        Выпрашивание денег, виртуальных ценностей, прав модератора
+                        или попытки обманным путем завладеть чужим имуществом.
+                        <div class="punishment">
+                            Наказание: Предупреждение → Мут на 2–6 часов →
+                            Бан от 7 дней.
+                        </div>
+                    </div>
+
+                </section>
+
+
+                <!-- 8 -->
+
+                <section class="rule-section" id="section-8">
+
+                    <h2>
+                        Раздел 8. Безопасность Аккаунтов и Выдача себя за Персонал
+                    </h2>
+
+                    <div class="rule">
+                        <strong>8.1. Выдача себя за Staff:</strong>
+                        Использование аватаров, ников или ввод участников
+                        в заблуждение с целью представить себя администратором
+                        или модератором.
+                        <div class="punishment">
+                            Наказание: Бан от 7 дней до Перманентного бана.
+                        </div>
+                    </div>
+
+                    <div class="rule">
+                        <strong>8.2. Ответственность за Аккаунт:</strong>
+                        Каждый участник сам отвечает за свой аккаунт.
+                        Отговорки «меня взломали» или «это писал мой друг»
+                        от ответственности не освобождают.
+                    </div>
+
+                </section>
+
+
+                <!-- 9 -->
+
+                <section class="rule-section" id="section-9">
+
+                    <h2>
+                        Раздел 9. Обход Наказаний и Твинк-Аккаунты
+                    </h2>
+
+                    <div class="rule">
+                        <strong>9.1. Обход Мута/Бана (Bypass):</strong>
+                        Заход в чат с альтернативных аккаунтов (твинков)
+                        или использование ботов для продолжения общения
+                        при активном наказании.
+                        <div class="punishment">
+                            Наказание: Бан всех твинк-аккаунтов навсегда +
+                            Удвоение срока наказания на основном аккаунте.
+                        </div>
+                    </div>
+
+                    <div class="rule">
+                        <strong>9.2. Ботоводство:</strong>
+                        Использование сеток ботов для накрутки,
+                        спама или рейдов.
+                        <div class="punishment">
+                            Наказание: Перманентный бан всех аккаунтов
+                            сетки + Бан по IP/ID.
+                        </div>
+                    </div>
+
+                </section>
+
+
+                <!-- 10 -->
+
+                <section class="rule-section" id="section-10">
+
+                    <h2>
+                        Раздел 10. Поведение в Голосовых Чатах (Voice)
+                    </h2>
+
+                    <div class="rule">
+                        <strong>10.1. Акустический Мусор:</strong>
+                        Трансляция громких скримеров, посторонних шумов,
+                        использование саундбордов или изменителей голоса
+                        без согласия участников.
+                        <div class="punishment">
+                            Наказание: Отключение микрофона →
+                            Мут в голосовых каналах на 6–12 часов.
+                        </div>
+                    </div>
+
+                    <div class="rule">
+                        <strong>10.2. Перебивание и Помехи:</strong>
+                        Умышленный срыв общения участников или работы ведущих
+                        в голосовых чатах.
+                        <div class="punishment">
+                            Наказание: Кик из голосового канала →
+                            Мут на 3 часа.
+                        </div>
+                    </div>
+
+                </section>
+
+
+                <!-- 11 -->
+
+                <section class="rule-section" id="section-11">
+
+                    <h2>
+                        Раздел 11. Ивенты, Подкасты и Конкурсы
+                    </h2>
+
+                    <div class="rule">
+                        <strong>11.1. Срыв Мероприятий:</strong>
+                        Умышленная помеха проведению официальных ивентов,
+                        турниров, подкастов или конкурсов, организуемых проектом.
+                        <div class="punishment">
+                            Наказание: Мут на 12 часов →
+                            Бан на участие в ивентах до 30 дней.
+                        </div>
+                    </div>
+
+                    <div class="rule">
+                        <strong>11.2. Абуз Конкурсов:</strong>
+                        Использование твинков или накрутки для нечестного
+                        получения призов в розыгрышах.
+                        <div class="punishment">
+                            Наказание: Аннулирование результатов +
+                            Бан на 14 дней.
+                        </div>
+                    </div>
+
+                </section>
+
+
+                <!-- 12 -->
+
+                <section class="rule-section" id="section-12">
+
+                    <h2>
+                        Раздел 12. Использование Технических Ошибок (Багоюз)
+                    </h2>
+
+                    <div class="rule">
+                        <strong>12.1. Багоюз Ботов:</strong>
+                        Использование технических уязвимостей или ошибок
+                        в работе официальных ботов проекта с целью получения
+                        выгоды или дезорганизации работы.
+                        <div class="punishment">
+                            Наказание: Бан от 14 дней до Перманентного.
+                        </div>
+                    </div>
+
+                    <div class="rule">
+                        <strong>12.2. Сокрытие Ошибок:</strong>
+                        Утаивание от Администрации критических багов проекта.
+                        Обнаруженные баги должны передаваться в техподдержку.
+                        <div class="punishment">
+                            Наказание: Предупреждение → Мут / Бан
+                            в зависимости от критичности бага.
+                        </div>
+                    </div>
+
+                </section>
+
+
+                <!-- 13 -->
+
+                <section class="rule-section" id="section-13">
+
+                    <h2>
+                        Раздел 13. Взаимодействие с Персонал-Составом (Staff)
+                    </h2>
+
+                    <div class="rule">
+                        <strong>13.1. Обязательность Требований:</strong>
+                        Указания и требования модераторов/администраторов
+                        в чате обязательны к исполнению.
+                    </div>
+
+                    <div class="rule">
+                        <strong>13.2. Оскорбление Администрации:</strong>
+                        Хамство, провокации, неуважение или ложь в адрес
+                        сотрудников Staff при исполнении ими обязанностей.
+                        <div class="punishment">
+                            Наказание: Мут от 12 до 24 часов →
+                            Бан от 3 до 14 дней.
+                        </div>
+                    </div>
+
+                    <div class="rule">
+                        <strong>13.3. Публичное Оспаривание:</strong>
+                        Устроение митингов, провоцирование споров с модераторами
+                        и публикация претензий к работе Staff в общем чате.
+                        Все претензии подаются строго в ЛС Руководству.
+                        <div class="punishment">
+                            Наказание: Мут от 30 до 120 минут.
+                        </div>
+                    </div>
+
+                </section>
+
+
+                <!-- 14 -->
+
+                <section class="rule-section" id="section-14">
+
+                    <h2>
+                        Раздел 14. Регламент Подачи Апелляций и Жалоб
+                    </h2>
+
+                    <div class="rule">
+                        <strong>14.1. Право на Обжалование:</strong>
+                        Каждый пользователь имеет право обжаловать выданное
+                        наказание в течение <strong>24 часов</strong> через
+                        ЛС Руководству или Техподдержку, предоставив доказательства.
+                    </div>
+
+                    <div class="rule">
+                        <strong>14.2. Ложные Жалобы:</strong>
+                        Попытка обманом подставить другого игрока или
+                        сфальсифицировать доказательства (скриншоты/видео).
+                        <div class="punishment">
+                            Наказание: Перенос наказания на заявителя
+                            в двойном объеме / Бан до 14 дней.
+                        </div>
+                    </div>
+
+                </section>
+
+
+                <!-- 15 -->
+
+                <section class="rule-section" id="section-15">
+
+                    <h2>
+                        Раздел 15. Заключительные Положения и Форс-Мажор
+                    </h2>
+
+                    <div class="rule">
+                        <strong>15.1. Отягчающие Обстоятельства:</strong>
+                        Повторные нарушения, системный игнор правил,
+                        демонстративное неуважение к чату увеличивают срок
+                        любого наказания в два раза.
+                    </div>
+
+                    <div class="rule">
+                        <strong>15.2. Внесение Правок:</strong>
+                        Руководство проекта <strong>via</strong> оставляет
+                        за собой право вносить изменения в данный Кодекс
+                        без предварительного уведомления участников.
+                        Изменения вступают в силу с момента их публикации.
+                    </div>
+
+                </section>
+
+
+                <!-- 16 -->
+
+                <section class="rule-section" id="section-16">
+
+                    <h2>
+                        Раздел 16. Чрезвычайные Угрозы и Атаки
+                        на Инфраструктуру
+                    </h2>
+
+                    <div class="warning">
+                        <strong>
+                            ВНИМАНИЕ:
+                        </strong>
+                        Деятельность, описанная в данном разделе,
+                        является прямым вредительством и пресекается
+                        мерами полного и безапелляционного удаления
+                        нарушителя с проекта.
+                    </div>
+
+                    <div class="rule">
+                        <strong>
+                            16.1. Рейды, Спам-атаки и Дезорганизация Чатов
+                            (Chat Raid)
+                        </strong><br><br>
+
+                        Организация, участие, содействие или призывы
+                        к массовым набегам (рейдам), захвату чатов,
+                        спам-атакам софта/скриптов, отправке скримеров,
+                        краш-символов, длинных лагающих текстов,
+                        забивающих клиент (Unicode-бомбы), или массовому
+                        пингу участников.
+
+                        <div class="punishment">
+                            Мера наказания: Немедленный Перманентный Бан
+                            основного аккаунта и всех связанных профилей
+                            без права на апелляцию.
+                            Полная очистка всех сообщений и занесение
+                            пользователя/сообщества в Черный Список проекта.
+                        </div>
+                    </div>
+
+                    <div class="rule">
+                        <strong>
+                            16.2. Вредоносное ПО, DDoS и Взлом Систем
+                            (DDoS & Cyber Attacks)
+                        </strong><br><br>
+
+                        Любые попытки проведения DDoS-атак на серверы,
+                        ботов или веб-ресурсы проекта, поиск уязвимостей
+                        с целью причинения ущерба, распространение стиллеров,
+                        ратников, запуск вредоносных скриптов, а также попытки
+                        взлома аккаунтов Персонала или панелей управления.
+
+                        <div class="punishment">
+                            Мера наказания: Бессрочная Блокировка (Blacklist)
+                            по ID / IP / Телефону на всех ресурсах via.
+                            Аннулирование любых апелляций, передача данных
+                            о нарушителе в базы данных безопасности смежных
+                            проектов и блокировка всех соучастников.
+                        </div>
+                    </div>
+
+                    <div class="rule">
+                        <strong>
+                            16.3. Саботаж и Призывы к Разрушению Проекта
+                        </strong><br><br>
+
+                        Координация действий, направленных на подрыв работы
+                        ресурсов via, массовый уход пользователей,
+                        намеренная скрутка рейтинга, рейды на каналы отзывов
+                        или попытки сломать инфраструктуру проекта изнутри.
+
+                        <div class="punishment">
+                            Мера наказания: Перманентный Бан всех организаторов
+                            и активных участников с полной блокировкой доступа
+                            к поддержке.
+                        </div>
+                    </div>
+
+                </section>
+
+            </article>
+
+        </div>
+
     </div>
 
-</main>
+</section>
+
+
+<!-- =========================
+     PROJECT
+========================= -->
+
+<section class="page" id="project">
+
+    <div class="content-page">
+
+        <div class="page-heading">
+            <div class="small">VIA COMMUNITY / PROJECT</div>
+            <h1>Проект</h1>
+            <p>
+                Пространство VIA находится в стадии формирования.
+                Здесь будет опубликована подробная информация о проекте,
+                его направлениях, возможностях и планах развития.
+            </p>
+        </div>
+
+        <div class="project-box">
+
+            <h2>VIA</h2>
+
+            <p>
+                VIA — проект, который находится на этапе развития.
+                Основная информация и ключевые направления будут представлены
+                здесь по мере формирования проекта.
+            </p>
+
+            <p>
+                Этот раздел будет обновляться вместе с развитием VIA.
+            </p>
+
+            <div class="project-status">
+                <span class="status-dot"></span>
+                Проект формируется
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     TEAM
+========================= -->
+
+<section class="page" id="team">
+
+    <div class="content-page">
+
+        <div class="page-heading">
+            <div class="small">VIA COMMUNITY / STAFF</div>
+            <h1>Команда</h1>
+            <p>
+                Команда проекта пока находится на этапе формирования.
+            </p>
+        </div>
+
+        <div class="team-box">
+
+            <h2>Состав формируется</h2>
+
+            <p>
+                На данный момент официальный состав команды VIA
+                находится в процессе формирования.
+            </p>
+
+            <p>
+                Информация о руководстве, администрации и других участниках
+                команды будет опубликована здесь после формирования состава.
+            </p>
+
+            <div class="team-status">
+                <span class="status-dot"></span>
+                Team formation
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- BOTTOM -->
 
 <div class="bottom">
+
     <div class="status">
         <span class="status-dot"></span>
         ONLINE
     </div>
 
-    <div>VIA © 2026</div>
+    <div>
+        VIA © 2026
+    </div>
+
 </div>
 
+
 <div class="vignette"></div>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+const pages = document.querySelectorAll(".page");
+const navLinks = document.querySelectorAll(".nav a");
+
+function showPage(pageName) {
+
+    if (!document.getElementById(pageName)) {
+        pageName = "home";
+    }
+
+    pages.forEach(page => {
+        page.classList.remove("active");
+    });
+
+    document.getElementById(pageName).classList.add("active");
+
+    navLinks.forEach(link => {
+        link.classList.remove("active");
+
+        if (link.dataset.page === pageName) {
+            link.classList.add("active");
+        }
+    });
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+function handleHash() {
+
+    let hash = window.location.hash.replace("#", "");
+
+    if (!hash) {
+        hash = "home";
+    }
+
+    showPage(hash);
+}
+
+
+navLinks.forEach(link => {
+
+    link.addEventListener("click", function(event) {
+
+        const page = this.dataset.page;
+
+        if (page) {
+            event.preventDefault();
+
+            window.location.hash = page;
+
+            showPage(page);
+        }
+
+    });
+
+});
+
+
+window.addEventListener("hashchange", handleHash);
+
+handleHash();
+
+</script>
 
 </body>
 </html>
