@@ -660,6 +660,95 @@ body {
 }
 
 /* =========================================================
+   MEDIA
+   ========================================================= */
+
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+
+.media-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 22px;
+    border: 1px solid var(--line);
+    border-radius: 17px;
+    background: rgba(8,11,18,.58);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    color: var(--text);
+    text-decoration: none;
+    transition: .25s ease;
+    overflow: hidden;
+}
+
+.media-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255,255,255,.14);
+    background: rgba(255,255,255,.045);
+}
+
+.media-icon {
+    width: 52px;
+    height: 52px;
+    flex: 0 0 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: rgba(255,255,255,.025);
+}
+
+.media-icon svg {
+    width: 25px;
+    height: 25px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.media-info {
+    min-width: 0;
+}
+
+.media-label {
+    color: rgba(245,247,250,.9);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.media-handle {
+    margin-top: 5px;
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.media-arrow {
+    margin-left: auto;
+    color: rgba(220,226,238,.28);
+    font-size: 17px;
+    transition: .25s ease;
+}
+
+.media-card:hover .media-arrow {
+    color: rgba(255,255,255,.8);
+    transform: translate(2px,-2px);
+}
+
+@media(max-width: 850px) {
+    .media-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================================
    RULES
    ========================================================= */
 
@@ -1024,6 +1113,7 @@ body {
     <a href="#rules" data-page="rules">ПРАВИЛА</a>
     <a href="#project" data-page="project">ПРОЕКТ</a>
     <a href="#team" data-page="team">КОМАНДА</a>
+    <a href="#media" data-page="media">МЕДИА</a>
 
 </nav>
 
@@ -1283,6 +1373,66 @@ body {
                 </p>
 
             </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MEDIA
+===================================================== -->
+
+<section class="page" id="media">
+
+    <div class="content">
+
+        <div class="heading">
+
+            <div class="heading-overline">
+                VIA / 003 — MEDIA
+            </div>
+
+            <h1>Медиа</h1>
+
+            <p>
+                Официальные страницы VIA.
+                Следи за проектом и его развитием во всех наших медиа.
+            </p>
+
+        </div>
+
+        <div class="media-grid">
+
+            <a class="media-card" href="https://www.tiktok.com/@viateams" target="_blank" rel="noopener noreferrer">
+                <div class="media-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M14.2 4.1c.4 2.1 1.7 3.4 3.8 3.6v2.5c-1.5 0-2.8-.4-3.8-1.1v6.2a4.8 4.8 0 1 1-4.8-4.8c.4 0 .8.1 1.2.2v2.6a2.3 2.3 0 1 0 1.1 2v-11.2h2.5z"/>
+                    </svg>
+                </div>
+                <div class="media-info">
+                    <div class="media-label">TikTok</div>
+                    <div class="media-handle">@viateams</div>
+                </div>
+                <div class="media-arrow">↗</div>
+            </a>
+
+            <a class="media-card" href="https://www.instagram.com/viateamchannel/" target="_blank" rel="noopener noreferrer">
+                <div class="media-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="3.5" y="3.5" width="17" height="17" rx="5"/>
+                        <circle cx="12" cy="12" r="4"/>
+                        <circle cx="17.4" cy="6.7" r=".8" fill="currentColor" stroke="none"/>
+                    </svg>
+                </div>
+                <div class="media-info">
+                    <div class="media-label">Instagram</div>
+                    <div class="media-handle">@viateamchannel</div>
+                </div>
+                <div class="media-arrow">↗</div>
+            </a>
 
         </div>
 
@@ -2025,6 +2175,7 @@ window.addEventListener(
 readHash();
 
 </script>
+
 
 </body>
 </html>
