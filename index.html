@@ -660,95 +660,6 @@ body {
 }
 
 /* =========================================================
-   MEDIA
-   ========================================================= */
-
-.media-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-}
-
-.media-card {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    padding: 22px;
-    border: 1px solid var(--line);
-    border-radius: 17px;
-    background: rgba(8,11,18,.58);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    color: var(--text);
-    text-decoration: none;
-    transition: .25s ease;
-    overflow: hidden;
-}
-
-.media-card:hover {
-    transform: translateY(-3px);
-    border-color: rgba(255,255,255,.14);
-    background: rgba(255,255,255,.045);
-}
-
-.media-icon {
-    width: 52px;
-    height: 52px;
-    flex: 0 0 52px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    background: rgba(255,255,255,.025);
-}
-
-.media-icon svg {
-    width: 25px;
-    height: 25px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 1.7;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.media-info {
-    min-width: 0;
-}
-
-.media-label {
-    color: rgba(245,247,250,.9);
-    font-size: 13px;
-    font-weight: 500;
-}
-
-.media-handle {
-    margin-top: 5px;
-    color: var(--muted);
-    font-size: 10px;
-}
-
-.media-arrow {
-    margin-left: auto;
-    color: rgba(220,226,238,.28);
-    font-size: 17px;
-    transition: .25s ease;
-}
-
-.media-card:hover .media-arrow {
-    color: rgba(255,255,255,.8);
-    transform: translate(2px,-2px);
-}
-
-@media(max-width: 850px) {
-    .media-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* =========================================================
    RULES
    ========================================================= */
 
@@ -1064,6 +975,72 @@ body {
         padding: 45px 22px;
     }
 }
+
+.home-meta{display:flex;gap:24px;flex-wrap:wrap;margin-top:34px;color:var(--muted);font-size:10px;letter-spacing:.18em;text-transform:uppercase}
+.home-actions{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}
+.home-actions a{padding:12px 16px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.025);color:var(--text);text-decoration:none;font-size:11px;letter-spacing:.12em;transition:.25s}
+.home-actions a:hover{background:rgba(255,255,255,.08);transform:translateY(-2px)}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:32px}
+.card{display:flex;flex-direction:column;gap:10px;padding:28px;border:1px solid var(--line);border-radius:22px;background:var(--glass);color:var(--text);text-decoration:none;transition:.3s}
+.card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.18);background:rgba(255,255,255,.055)}
+.card-kicker{font-size:10px;letter-spacing:.2em;color:var(--muted)}
+.card strong{font-size:25px;font-weight:500;letter-spacing:-.03em}
+.card small{color:var(--muted);font-size:12px}
+.status-grid{display:grid;grid-template-columns:1.4fr .6fr;gap:14px;margin-top:14px}
+.status-box{padding:20px 22px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.018);display:flex;flex-direction:column;gap:12px}
+.status-box span{font-size:9px;letter-spacing:.2em;color:var(--faint)}
+.status-box strong{font-size:12px;letter-spacing:.08em;font-weight:500}.status-box i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#b9e6c2;box-shadow:0 0 12px #b9e6c2;margin-right:8px}
+@media(max-width:700px){.cards,.status-grid{grid-template-columns:1fr}.home-meta{gap:12px}}
+
+/* =====================================================
+   VIA 3.0 — NEW EXPERIENCE LAYER
+===================================================== */
+.v3-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px;margin-top:44px}
+.v3-panel{border:1px solid var(--line);background:rgba(10,14,22,.56);backdrop-filter:blur(18px);border-radius:20px;padding:28px;box-shadow:0 20px 70px rgba(0,0,0,.22)}
+.v3-kicker{font-size:10px;letter-spacing:.22em;color:var(--muted);text-transform:uppercase;margin-bottom:14px}
+.v3-title{font-size:clamp(26px,4vw,54px);line-height:.98;letter-spacing:-.04em;margin:0 0 16px}
+.v3-copy{color:var(--muted);line-height:1.7;max-width:620px}
+.v3-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.v3-btn{display:inline-flex;align-items:center;gap:9px;padding:12px 16px;border:1px solid var(--line);border-radius:999px;color:var(--text);text-decoration:none;background:rgba(255,255,255,.035);font-size:11px;letter-spacing:.12em;text-transform:uppercase;transition:.25s}
+.v3-btn:hover{background:rgba(255,255,255,.09);transform:translateY(-2px)}
+.v3-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+.v3-metric{padding:18px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.025)}
+.v3-metric strong{display:block;font-size:22px;letter-spacing:-.04em;margin-bottom:5px}.v3-metric span{font-size:9px;letter-spacing:.16em;color:var(--muted);text-transform:uppercase}
+.v3-status{display:grid;gap:12px;margin-top:20px}.v3-status-row{display:flex;justify-content:space-between;gap:20px;padding-bottom:12px;border-bottom:1px solid var(--line);font-size:11px}.v3-status-row span:last-child{color:var(--muted);letter-spacing:.08em}.v3-live{display:inline-flex;align-items:center;gap:8px;color:var(--text)}.v3-live i{width:6px;height:6px;border-radius:50%;background:#dce6f5;box-shadow:0 0 12px #dce6f5;display:inline-block}
+.v3-updates{display:grid;gap:10px;margin-top:16px}.v3-update{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid var(--line)}.v3-update b{font-size:12px;font-weight:500}.v3-update small{color:var(--muted);font-size:9px;letter-spacing:.14em;text-transform:uppercase}
+.v3-socials{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:26px}.v3-social{display:block;text-decoration:none;color:var(--text);padding:22px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.025);transition:.25s}.v3-social:hover{transform:translateY(-3px);background:rgba(255,255,255,.07)}.v3-social small{display:block;color:var(--muted);font-size:9px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:10px}.v3-social strong{font-size:18px}
+@media(max-width:760px){.v3-grid{grid-template-columns:1fr}.v3-metrics{grid-template-columns:1fr}.v3-socials{grid-template-columns:1fr}.v3-panel{padding:22px}}
+
+/* =====================================================
+   VIA 3.1 — DISCOVERY SECTIONS
+===================================================== */
+.discovery-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:32px}
+.discovery-card{position:relative;min-height:210px;padding:26px;border:1px solid var(--line);border-radius:20px;background:rgba(10,14,22,.56);backdrop-filter:blur(18px);color:var(--text);overflow:hidden;transition:.3s}
+.discovery-card:hover{transform:translateY(-5px);border-color:rgba(255,255,255,.18);background:rgba(255,255,255,.05)}
+.discovery-card::after{content:"";position:absolute;right:-50px;bottom:-70px;width:150px;height:150px;border:1px solid rgba(255,255,255,.05);border-radius:50%}
+.discovery-number{font-size:10px;letter-spacing:.2em;color:var(--muted);margin-bottom:38px}
+.discovery-card h3{font-size:25px;font-weight:500;letter-spacing:-.035em;margin:0 0 10px}
+.discovery-card p{color:var(--muted);line-height:1.65;font-size:12px;margin:0}
+.roadmap{display:grid;gap:0;margin-top:38px;border-top:1px solid var(--line)}
+.roadmap-item{display:grid;grid-template-columns:90px 1fr auto;gap:24px;align-items:center;padding:24px 0;border-bottom:1px solid var(--line)}
+.roadmap-item .phase{font-size:9px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase}
+.roadmap-item h3{margin:0 0 5px;font-size:18px;font-weight:500}
+.roadmap-item p{margin:0;color:var(--muted);font-size:11px;line-height:1.55}
+.roadmap-status{font-size:9px;letter-spacing:.14em;color:var(--muted);white-space:nowrap}
+.timeline{display:grid;gap:12px;margin-top:32px}
+.timeline-item{display:grid;grid-template-columns:120px 1fr;gap:20px;padding:20px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.018)}
+.timeline-date{font-size:9px;letter-spacing:.16em;color:var(--muted);text-transform:uppercase}
+.timeline-item h3{margin:0 0 7px;font-size:15px;font-weight:500}
+.timeline-item p{margin:0;color:var(--muted);font-size:11px;line-height:1.6}
+.faq{display:grid;gap:10px;margin-top:32px}
+.faq details{border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.018);overflow:hidden}
+.faq summary{cursor:pointer;padding:19px 20px;list-style:none;font-size:12px;letter-spacing:.03em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";float:right;color:var(--muted);font-size:16px}
+.faq details[open] summary::after{content:"−"}
+.faq details p{padding:0 20px 20px;margin:0;color:var(--muted);font-size:11px;line-height:1.7;max-width:760px}
+.section-note{margin-top:12px;color:var(--muted);font-size:10px;letter-spacing:.08em}
+@media(max-width:850px){.discovery-grid{grid-template-columns:1fr}.roadmap-item{grid-template-columns:70px 1fr}.roadmap-status{grid-column:2}.timeline-item{grid-template-columns:1fr;gap:8px}}
 </style>
 </head>
 
@@ -1110,10 +1087,14 @@ body {
     <div class="nav-logo">VIA</div>
 
     <a href="#home" data-page="home">ГЛАВНАЯ</a>
-    <a href="#rules" data-page="rules">ПРАВИЛА</a>
     <a href="#project" data-page="project">ПРОЕКТ</a>
+    <a href="#explore" data-page="explore">ВОЗМОЖНОСТИ</a>
+    <a href="#roadmap" data-page="roadmap">ROADMAP</a>
+    <a href="#updates" data-page="updates">UPDATES</a>
     <a href="#team" data-page="team">КОМАНДА</a>
     <a href="#media" data-page="media">МЕДИА</a>
+    <a href="#faq" data-page="faq">FAQ</a>
+    <a href="#rules" data-page="rules">ПРАВИЛА</a>
 
 </nav>
 
@@ -1125,29 +1106,39 @@ body {
 <section class="page active" id="home">
 
     <main class="home">
-
         <div class="hero">
-
-            <div class="hero-overline">
-                VIA COMMUNITY
-            </div>
-
-            <div class="hero-logo">
-                VIA
-            </div>
-
-            <div class="hero-subtitle">
-                Всё начинается здесь
-            </div>
-
+            <div class="hero-overline">VIA / 000 — COMMUNITY</div>
+            <div class="hero-logo">VIA</div>
+            <div class="hero-subtitle">Всё начинается здесь</div>
             <div class="hero-line"></div>
-
+            <div class="v3-actions" style="justify-content:center">
+                <a class="v3-btn" href="#project" data-page="project">ENTER VIA →</a>
+                <a class="v3-btn" href="#media" data-page="media">FOLLOW VIA</a>
+            </div>
         </div>
-
-        <div class="scroll-hint">
-            Explore VIA
+        <div class="v3-grid" style="text-align:left;max-width:1000px;margin-left:auto;margin-right:auto">
+            <div class="v3-panel">
+                <div class="v3-kicker">VIA / IDENTITY</div>
+                <h2 class="v3-title">Пространство для людей, идей и проектов.</h2>
+                <p class="v3-copy">VIA создаётся как независимое пространство, которое растёт вместе с сообществом. Сейчас мы только начинаем — и именно поэтому каждый следующий шаг становится частью истории проекта.</p>
+                <div class="v3-metrics">
+                    <div class="v3-metric"><strong>2026</strong><span>ESTABLISHED</span></div>
+                    <div class="v3-metric"><strong>01</strong><span>COMMUNITY</span></div>
+                    <div class="v3-metric"><strong>∞</strong><span>FUTURE</span></div>
+                </div>
+            </div>
+            <div class="v3-panel">
+                <div class="v3-kicker">VIA / STATUS</div>
+                <div class="v3-live"><i></i> ALL SYSTEMS OPERATIONAL</div>
+                <div class="v3-status">
+                    <div class="v3-status-row"><span>WEBSITE</span><span>ONLINE</span></div>
+                    <div class="v3-status-row"><span>COMMUNITY</span><span>FORMING</span></div>
+                    <div class="v3-status-row"><span>DEVELOPMENT</span><span>ACTIVE</span></div>
+                    <div class="v3-status-row"><span>LAST UPDATE</span><span>22.09.2026</span></div>
+                </div>
+            </div>
         </div>
-
+        <div class="scroll-hint">Explore VIA ↓</div>
     </main>
 
 </section>
@@ -1384,62 +1375,116 @@ body {
 <!-- =====================================================
      MEDIA
 ===================================================== -->
-
 <section class="page" id="media">
-
     <div class="content">
-
         <div class="heading">
-
-            <div class="heading-overline">
-                VIA / 003 — MEDIA
-            </div>
-
+            <div class="heading-overline">VIA / 004 — MEDIA</div>
             <h1>Медиа</h1>
-
-            <p>
-                Официальные страницы VIA.
-                Следи за проектом и его развитием во всех наших медиа.
-            </p>
-
+            <p>Следи за развитием VIA там, где проект выходит за пределы этого сайта.</p>
         </div>
-
-        <div class="media-grid">
-
-            <a class="media-card" href="https://www.tiktok.com/@viateams" target="_blank" rel="noopener noreferrer">
-                <div class="media-icon">
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M14.2 4.1c.4 2.1 1.7 3.4 3.8 3.6v2.5c-1.5 0-2.8-.4-3.8-1.1v6.2a4.8 4.8 0 1 1-4.8-4.8c.4 0 .8.1 1.2.2v2.6a2.3 2.3 0 1 0 1.1 2v-11.2h2.5z"/>
-                    </svg>
-                </div>
-                <div class="media-info">
-                    <div class="media-label">TikTok</div>
-                    <div class="media-handle">@viateams</div>
-                </div>
-                <div class="media-arrow">↗</div>
-            </a>
-
-            <a class="media-card" href="https://www.instagram.com/viateamchannel/" target="_blank" rel="noopener noreferrer">
-                <div class="media-icon">
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <rect x="3.5" y="3.5" width="17" height="17" rx="5"/>
-                        <circle cx="12" cy="12" r="4"/>
-                        <circle cx="17.4" cy="6.7" r=".8" fill="currentColor" stroke="none"/>
-                    </svg>
-                </div>
-                <div class="media-info">
-                    <div class="media-label">Instagram</div>
-                    <div class="media-handle">@viateamchannel</div>
-                </div>
-                <div class="media-arrow">↗</div>
-            </a>
-
+        <div class="v3-panel" style="margin-top:40px">
+            <div class="v3-kicker">FOLLOW VIA</div>
+            <h2 class="v3-title">Проект продолжается<br>за пределами сайта.</h2>
+            <div class="v3-socials">
+                <a class="v3-social" href="https://www.tiktok.com/@viateams" target="_blank" rel="noopener">
+                    <small>TIKTOK</small><strong>@viateams →</strong>
+                </a>
+                <a class="v3-social" href="https://www.instagram.com/viateamchannel/" target="_blank" rel="noopener">
+                    <small>INSTAGRAM</small><strong>@viateamchannel →</strong>
+                </a>
+            </div>
         </div>
-
+        <div class="v3-panel" style="margin-top:16px">
+            <div class="v3-kicker">VIA / UPDATES</div>
+            <div class="v3-updates">
+                <div class="v3-update"><b>Website 3.0</b><small>22.09.2026</small></div>
+                <div class="v3-update"><b>Social media launched</b><small>22.09.2026</small></div>
+                <div class="v3-update"><b>Project formation</b><small>ACTIVE</small></div>
+            </div>
+        </div>
     </div>
-
 </section>
 
+
+<!-- =====================================================
+     EXPLORE / FEATURES
+===================================================== -->
+<section class="page" id="explore">
+    <div class="content">
+        <div class="heading">
+            <div class="heading-overline">VIA / 005 — EXPLORE</div>
+            <h1>Возможности</h1>
+            <p>То, из чего постепенно будет складываться экосистема VIA.</p>
+        </div>
+        <div class="discovery-grid">
+            <div class="discovery-card"><div class="discovery-number">01 / COMMUNITY</div><h3>Сообщество</h3><p>Общение, новые знакомства и пространство, в котором участники могут создавать что-то вместе.</p></div>
+            <div class="discovery-card"><div class="discovery-number">02 / PROJECTS</div><h3>Проекты</h3><p>Собственные идеи, направления и инициативы, которые могут появляться внутри VIA.</p></div>
+            <div class="discovery-card"><div class="discovery-number">03 / EVENTS</div><h3>События</h3><p>Активности, мероприятия и форматы, которые однажды станут частью жизни сообщества.</p></div>
+            <div class="discovery-card"><div class="discovery-number">04 / MEDIA</div><h3>Медиа</h3><p>Контент и новости проекта за пределами сайта — TikTok, Instagram и будущие площадки.</p></div>
+            <div class="discovery-card"><div class="discovery-number">05 / FEEDBACK</div><h3>Обратная связь</h3><p>Идеи и предложения участников смогут влиять на то, куда VIA будет двигаться дальше.</p></div>
+            <div class="discovery-card"><div class="discovery-number">06 / FUTURE</div><h3>Будущее</h3><p>Раздел для возможностей, которые пока существуют только как идеи и планы.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     ROADMAP
+===================================================== -->
+<section class="page" id="roadmap">
+    <div class="content">
+        <div class="heading">
+            <div class="heading-overline">VIA / 006 — ROADMAP</div>
+            <h1>Roadmap</h1>
+            <p>Направление развития проекта. Этапы могут меняться по мере формирования VIA.</p>
+        </div>
+        <div class="roadmap">
+            <div class="roadmap-item"><div class="phase">01 / NOW</div><div><h3>Основа</h3><p>Сайт, визуальная система, правила и первые социальные площадки.</p></div><div class="roadmap-status">ACTIVE</div></div>
+            <div class="roadmap-item"><div class="phase">02 / NEXT</div><div><h3>Сообщество</h3><p>Формирование ядра участников и запуск первых активностей.</p></div><div class="roadmap-status">PLANNED</div></div>
+            <div class="roadmap-item"><div class="phase">03 / FUTURE</div><div><h3>Платформа</h3><p>Новые инструменты, направления и собственные сервисы VIA.</p></div><div class="roadmap-status">PLANNED</div></div>
+            <div class="roadmap-item"><div class="phase">04 / LATER</div><div><h3>Экосистема</h3><p>Связанные проекты, события и возможности для участников.</p></div><div class="roadmap-status">TBD</div></div>
+        </div>
+        <div class="section-note">ROADMAP НЕ ЯВЛЯЕТСЯ ФИКСИРОВАННЫМ ПЛАНОМ И МОЖЕТ ИЗМЕНЯТЬСЯ.</div>
+    </div>
+</section>
+
+<!-- =====================================================
+     UPDATES
+===================================================== -->
+<section class="page" id="updates">
+    <div class="content">
+        <div class="heading">
+            <div class="heading-overline">VIA / 007 — LOG</div>
+            <h1>Updates</h1>
+            <p>Короткий журнал того, как VIA меняется со временем.</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item"><div class="timeline-date">23.09.2026 / NOW</div><div><h3>VIA 3.1</h3><p>Добавлены новые разделы сайта, roadmap, FAQ и расширенная структура проекта.</p></div></div>
+            <div class="timeline-item"><div class="timeline-date">22.09.2026</div><div><h3>VIA 3.0</h3><p>Обновлена главная страница и добавлена новая визуальная система.</p></div></div>
+            <div class="timeline-item"><div class="timeline-date">22.09.2026</div><div><h3>MEDIA</h3><p>Запущены официальные страницы VIA в TikTok и Instagram.</p></div></div>
+            <div class="timeline-item"><div class="timeline-date">START</div><div><h3>Начало</h3><p>Создание VIA и формирование идеи будущего сообщества.</p></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     FAQ
+===================================================== -->
+<section class="page" id="faq">
+    <div class="content">
+        <div class="heading">
+            <div class="heading-overline">VIA / 008 — FAQ</div>
+            <h1>FAQ</h1>
+            <p>Короткие ответы на основные вопросы о VIA.</p>
+        </div>
+        <div class="faq">
+            <details open><summary>Что такое VIA?</summary><p>VIA — проект, который находится на этапе формирования сообщества, концепции и собственной платформы.</p></details>
+            <details><summary>VIA уже запущен?</summary><p>Сайт и социальные площадки уже существуют. Само сообщество и будущие направления проекта находятся в процессе формирования.</p></details>
+            <details><summary>Можно ли присоединиться к команде?</summary><p>Официальный состав команды пока формируется. Информация о наборе появится в разделе «Команда», когда он будет открыт.</p></details>
+            <details><summary>Где следить за новостями?</summary><p>Сейчас основные внешние площадки VIA — TikTok и Instagram. Ссылки находятся в разделе «Медиа».</p></details>
+            <details><summary>Что будет дальше?</summary><p>Следующие этапы описаны в Roadmap. Конкретные сроки могут изменяться вместе с развитием проекта.</p></details>
+        </div>
+    </div>
+</section>
 
 <!-- =====================================================
      RULES
@@ -2134,10 +2179,35 @@ function readHash() {
         .split("?")[0];
 
     if (!hash) {
-        hash = "home";
+        openPage("home");
+        return;
     }
 
-    openPage(hash);
+    // Разделы правил (r1–r16) не являются отдельными страницами.
+    // При переходе на них сначала открываем страницу «Правила»,
+    // а затем прокручиваем к нужному пункту.
+    if (/^r(?:1[0-6]|[1-9])$/.test(hash)) {
+        openPage("rules");
+
+        requestAnimationFrame(() => {
+            const rule = document.getElementById(hash);
+            if (rule) {
+                rule.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            }
+        });
+
+        return;
+    }
+
+    // Только реальные страницы могут переключать основной интерфейс.
+    if (["home", "rules", "project", "team", "media", "explore", "roadmap", "updates", "faq"].includes(hash)) {
+        openPage(hash);
+    } else {
+        openPage("home");
+    }
 }
 
 
@@ -2175,7 +2245,3 @@ window.addEventListener(
 readHash();
 
 </script>
-
-
-</body>
-</html>
